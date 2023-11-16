@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:56:09 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/13 16:51:11 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:13:32 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void	revrb(t_list **stack_b)
 	temp->next = NULL;
 	ft_lstadd_front(&(*stack_b), add);
 }
-
 
 void	rrr(t_list **stack_a, t_list **stack_b)
 {

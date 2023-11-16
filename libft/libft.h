@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:21:47 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/08 20:22:41 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:28:30 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@
 # include <ctype.h>
 # include <stdio.h>
 
+typedef struct s_list
+{
+	int				content;
+	struct s_list	*next;
+}t_list;
+
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
-int		ft_atoi(const char *nptr);
+int		ft_atoi(const char *nptr, t_list **stack);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
@@ -54,13 +60,6 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-
-//bonus
-typedef struct s_list
-{
-	int				content;
-	struct s_list	*next;
-}t_list;
 
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
