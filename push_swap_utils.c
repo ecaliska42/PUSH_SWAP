@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:14:02 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/17 15:00:28 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:45:14 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	freeall(t_list **lst)
 		*lst = temp->next;
 		free (temp);
 	}
-	free(lst);
+	//free(lst);
+	exit (-1);
 }
 
 int	hasdouble(t_list *head)
