@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:06:19 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/16 14:54:56 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:09:14 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-void	pa(t_list **stack_a, t_list **stack_b); //Sorting functions
+void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
 void	sa(t_list *head);
 void	sb(t_list *head);
@@ -29,17 +29,14 @@ void	rr(t_list **stack_a, t_list **stack_b);
 void	rra(t_list **head);
 void	rrb(t_list **head);
 void	rrr(t_list **stack_a, t_list **stack_b);
-
-void    printstack(t_list *head, char c); //THIS FUNCTION IS ONLY FOR TESTING AND NOT NEEDED
-void	sorttwo(t_list **stack_b); //sorts two numbers only
-void	sortthree(t_list **stack_a); //sorts three numbers only
-int	    is_sorted(t_list *stack);
+void	sorttwo(t_list **stack_b);
+void	sortthree(t_list **stack_a);
+int		is_sorted(t_list *stack);
 void	freeall(t_list **lst);
 void	sortfour(t_list **stack_a, t_list **stack_b);
 void	sortfive(t_list **stack_a, t_list **stack_b);
-int	    hasdouble(t_list *head);
-
-
-
+int		hasdouble(t_list *head);
+void	pushmin(t_list **stack_a, t_list **stack_b);
+int		getpos(t_list *stack, int nbr);
 
 #endif

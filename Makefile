@@ -2,7 +2,9 @@ CC=	cc
 
 CFLAGS=	-Wall -Werror -Wextra
 
-SRC=	push_swap.c push_functions.c r_rotate_functions.c rotate_functions.c swap_functions.c
+SRC=	push_swap.c push_functions.c r_rotate_functions.c \
+		rotate_functions.c swap_functions.c push_swap_utils.c \
+		sort_small_five.c
 
 NAME= push_swap
 

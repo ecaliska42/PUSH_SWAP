@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:56:09 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/16 14:13:32 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/17 14:36:48 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ void	rrb(t_list **stack_b)
 	}
 	node = temp->content;
 	temp = *stack_b;
-	while (temp->next->next != NULL)
+	while (temp->next->next != NULL && temp->next != NULL)
 	{
 		temp = temp->next;
 	}
 	add = ft_lstnew(node);
 	temp->next = NULL;
 	ft_lstadd_front(&(*stack_b), add);
-	write(1, "rra\n", 4);
+	write(1, "rrb\n", 4);
 }
 
 void	revra(t_list **stack_a)

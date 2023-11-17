@@ -6,26 +6,51 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:47:34 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/16 14:53:31 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:06:35 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sorttwo(t_list **stack_b) //sorts two numbers only
+void	pushmin(t_list **stack_a, t_list **stack_b)
+{
+	int		min;
+	t_list	*temp;
+	int		pos;
+
+	temp = *stack_a;
+	min = temp->content;
+	while (temp)
+	{
+		if (min > temp->content)
+			min = temp->content;
+		temp = temp->next;
+	}
+	pos = getpos(*stack_a, min);
+	while (min != (*stack_a)->content)
+	{
+		if (pos <= (ft_lstsize(*stack_a) / 2))
+			ra(&(*stack_a));
+		else
+			rra(&(*stack_a));
+	}
+	pb(&(*stack_a), &(*stack_b));
+}
+
+void	sorttwo(t_list **stack_b)
 {
 	int	a;
 	int	b;
-	
+
 	if (is_sorted((*stack_b)) == 1)
 		return ;
 	a = (*stack_b)->content;
 	b = (*stack_b)->next->content;
-	if(a > b)
+	if (a > b)
 		ra(&(*stack_b));
 }
 
-void	sortthree(t_list **stack_a) //sorts three numbers only
+void	sortthree(t_list **stack_a)
 {
 	int	a;
 	int	b;

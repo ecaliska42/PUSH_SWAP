@@ -6,29 +6,18 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:14:02 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/16 14:54:44 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:00:28 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void printstack(t_list *head, char c) //THIS FUNCTION IS ONLY FOR TESTING AND NOT NEEDED
-{
-	int	nb;
-	while(head)
-	{
-		nb = head->content;
-		ft_printf("%c=|%d|\n", c, nb);
-		head = head->next;
-	}
-}
-
 int	is_sorted(t_list *stack)
 {
 	int	temp;
-	
+
 	temp = stack->content;
-	while(stack)
+	while (stack)
 	{
 		if (temp > stack->content)
 			return (0);
@@ -48,6 +37,7 @@ void	freeall(t_list **lst)
 		*lst = temp->next;
 		free (temp);
 	}
+	free(lst);
 }
 
 int	hasdouble(t_list *head)
@@ -63,9 +53,24 @@ int	hasdouble(t_list *head)
 		{
 			temp = temp->next;
 			if (tmpnbr == temp->content)
-				return (1);
+				return (-1);
 		}
 		head = head->next;
 	}
 	return (0);
+}
+
+int	getpos(t_list *stack, int nbr)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		if (stack->content == nbr)
+			return (i);
+		i++;
+		stack = stack->next;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:21:47 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/16 14:28:30 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:55:38 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_list
 {
 	int				content;
+	//int				index;
 	struct s_list	*next;
 }t_list;
 
