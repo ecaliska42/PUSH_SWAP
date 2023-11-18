@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:29:25 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 17:52:56 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 19:58:56 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	error(int check, t_list **stack)
 t_list	*copy_list(t_list *stack)
 {
 	t_list *node;
+
 	if (stack == NULL)
 		return NULL;
 	else
@@ -130,23 +131,6 @@ t_list	*copy_list(t_list *stack)
 	}
 	return node;
 }
-
-/*t_list	*copy_list(t_list *stack)
-{
-	t_list	*temp;
-	t_list	*copy;
-	t_list	*node;
-	
-	copy = NULL;
-	while(temp)
-	{
-		node = ft_lstnew(temp->content);
-		ft_lstadd_back(&copy, node);
-		temp = temp->next;
-	}
-	return copy;	
-}*/
-
 
 void	swap(int *a, int *b)
 {
@@ -211,13 +195,11 @@ int	main(int ac, char **av)
 	error(ac, NULL);
 	stack_a = NULL;
 	stack_b = NULL;
-	temp = NULL;
 	fill_list(&stack_a, ac - 1, av);
 	error(hasdouble(stack_a), &stack_a);
 	if (ft_lstsize(stack_a) <= 5)
 		smaller_five(&stack_a, &stack_b);
 	temp = copy_list(stack_a);
-	//printstack(temp, 't');
 	if (!temp)
 	{
 		freeall(&stack_a);
@@ -226,9 +208,6 @@ int	main(int ac, char **av)
 	sorted(&temp);
 	getindex(stack_a, temp);
 	sorting_algorithm(&stack_a, &stack_b);
-	// if (is_sorted(stack_a) == 1)
-	// 	ft_printf("everything is sorted\n");
-	//sa(stack_a); //TESTING FUNCTINS RA AND SA HAVE MEMORY LEAKS
 	freeall(&temp);
 	freeall(&stack_a);
 	temp = NULL;

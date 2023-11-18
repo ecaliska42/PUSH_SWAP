@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:31:50 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/16 14:43:06 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 19:27:42 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ static void	free_my_nodes(t_list **stack)
 	}
 }
 
-int	ft_atoi(const char *nptr, t_list **stack)
+static void	error(t_list **stack)
 {
-	int	num;
+	free_my_nodes(&(*stack));
+	exit(write(1, "Error\n", 6));
+}
+
+long long int	ft_atoi(const char *nptr, t_list **stack)
+{
+	long long int	num;
 	int	neg;
 	int	pos;
 
@@ -51,16 +57,15 @@ int	ft_atoi(const char *nptr, t_list **stack)
 		pos++;
 	}
 	if (!(nptr[pos] >= '0' && nptr[pos] <= '9'))
-		exit(write(1, "Error\n", 6));
+		error(&(*stack));
 	while (nptr[pos])
 	{
 		if (nptr[pos] >= '0' && nptr[pos] <= '9')
 			num = num * 10 + (nptr[pos++] - '0');
 		else
-		{
-			free_my_nodes(&(*stack));
-			exit(write(1, "Error\n", 6));
-		}
+			error(&(*stack));
 	}
+	if (num >= 2147483647 || num <= -2147483648)
+		error(&(*stack));
 	return (num * neg);
 }

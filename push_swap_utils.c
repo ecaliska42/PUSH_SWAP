@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:14:02 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 17:47:36 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 19:55:47 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	freeall(t_list **lst)
 		*lst = temp->next;
 		free (temp);
 	}
-	exit (-1);
 }
 
 int	hasdouble(t_list *head)
@@ -77,10 +76,10 @@ int	getpos(t_list *stack, int nbr)
 	return (i);
 }
 
-void ft_list_remove_if(t_list **head, t_list *node)
+/*void list_remove_if(t_list **head, t_list *node)
 {
 	if (head == NULL || *head == NULL)
-		return;
+		return ;
 
 	t_list *cur = *head;
 
@@ -89,8 +88,35 @@ void ft_list_remove_if(t_list **head, t_list *node)
 		*head = cur->next;
 		free(cur);
 		cur = NULL;
-		ft_list_remove_if(head, node);
+		list_remove_if(head, node);
 	}
 	cur = *head;
-	ft_list_remove_if(&cur->next, node);
+	list_remove_if(&cur->next, node);
+}*/
+
+void list_remove_if(t_list **head, t_list *node)
+{
+   if (head == NULL || *head == NULL)
+       return;
+
+   t_list *cur = *head;
+   t_list *prev = NULL;
+
+   while (cur != NULL)
+   {
+       if (cur->content == node->content)
+       {
+           if (prev == NULL)
+               *head = cur->next;
+           else
+               prev->next = cur->next;
+
+           free(cur);
+           cur = NULL;
+           break;
+       }
+
+       prev = cur;
+       cur = cur->next;
+   }
 }
