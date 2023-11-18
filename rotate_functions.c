@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:55:31 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 20:43:39 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:53:18 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,36 +70,8 @@ void	rb(t_list **stack_b, int print)
 		write(1, "rb\n", 3);
 }
 
-// void	rota(t_list **stack_a)
-// {
-// 	t_list	*node;
-
-// 	if (!(*stack_a) || ft_lstsize((*stack_a)) < 2)
-// 		return ;
-// 	node = ft_lstnew((*stack_a)->content);
-// 	if (!node)
-// 		return ;
-// 	list_remove_if(&(*stack_a), node);
-// 	ft_lstadd_back(&(*stack_a), node);
-// }
-
-// void	rotb(t_list **stack_b)
-// {
-// 	t_list	*node;
-
-// 	if (!(*stack_b) || ft_lstsize((*stack_b)) < 2)
-// 		return ;
-// 	node = ft_lstnew((*stack_b)->content);
-// 	if (!node)
-// 		return ;
-// 	list_remove_if(&(*stack_b), node);
-// 	ft_lstadd_back(&(*stack_b), node);
-// }
-
 void	rr(t_list **stack_a, t_list **stack_b)
 {
-	// rota(&(*stack_a));
-	// rotb(&(*stack_b));
 	ra(&(*stack_a), -1);
 	rb(&(*stack_b), -1);
 	write(1, "rr\n", 3);

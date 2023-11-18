@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:29:25 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 19:58:56 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:49:13 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,6 @@ void	getindex(t_list *stack_a, t_list *sorted)
 			temp = temp->next;
 	}
 	temp = stack_a;
-}
-
-void printindex(t_list *head, char c) //THIS FUNCTION IS ONLY FOR TESTING AND NOT NEEDED
-{
-	int	nb;
-	t_list *temp;
-
-	temp = head;
-	while(temp)
-	{
-		nb = temp->content;
-		ft_printf("%c=|%d|\n", c, nb);
-		temp = temp->next;
-	}
-	temp = head;
-}
-
-void printstack(t_list *head, char c) //THIS FUNCTION IS ONLY FOR TESTING AND NOT NEEDED
-{
-	int	nb;
-	while(head)
-	{
-		nb = head->content;
-		ft_printf("%c=|%d|\n", c, nb);
-		head = head->next;
-	}
 }
 
 void	smaller_five(t_list **stack_a, t_list **stack_b)
@@ -82,7 +56,7 @@ void	sorting_algorithm(t_list **stack_a, t_list **stack_b)
 		while (len--)
 		{
 			if ((*stack_a)->content >> raiser & 1)
-				ra(&(*stack_a));
+				ra(&(*stack_a), 1);
 			else
 				pb(&(*stack_a), &(*stack_b));
 			
@@ -212,6 +186,6 @@ int	main(int ac, char **av)
 	freeall(&stack_a);
 	temp = NULL;
 	stack_a = NULL;
-	if (stack_b)
-		free(stack_b);
+	// if (stack_b)
+	// 	free(stack_b);
 }
