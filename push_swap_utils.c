@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:14:02 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/17 17:45:14 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:47:36 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ void	freeall(t_list **lst)
 {
 	t_list	*temp;
 
+	if (!(*lst))
+		return ;
 	while (*lst != NULL)
 	{
 		temp = *lst;
 		*lst = temp->next;
 		free (temp);
 	}
-	//free(lst);
 	exit (-1);
 }
 
@@ -74,4 +75,22 @@ int	getpos(t_list *stack, int nbr)
 		stack = stack->next;
 	}
 	return (i);
+}
+
+void ft_list_remove_if(t_list **head, t_list *node)
+{
+	if (head == NULL || *head == NULL)
+		return;
+
+	t_list *cur = *head;
+
+	if (cur->content == node->content)
+	{
+		*head = cur->next;
+		free(cur);
+		cur = NULL;
+		ft_list_remove_if(head, node);
+	}
+	cur = *head;
+	ft_list_remove_if(&cur->next, node);
 }

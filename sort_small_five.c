@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:47:34 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/17 18:44:13 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 11:47:44 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,20 @@ void	sortfour(t_list **stack_a, t_list **stack_b)
 	sortthree(&(*stack_a));
 	pa(&(*stack_a), &(*stack_b));
 }
+
+// void	srtfour(t_list **stack_a, t_list **stack_b)
+// {
+// 	int	a;
+// 	int	b;
+// 	int	c;
+// 	int	d;
+
+// 	a = (*stack_a)[0].content;
+// 	b = (*stack_a)[1].content;
+// 	c = (*stack_a)[2].content;
+// 	d = (*stack_a)[3].content;
+	
+// }
 
 void	sortfive(t_list **stack_a, t_list **stack_b)
 {

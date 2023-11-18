@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:29:25 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/17 19:09:22 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:52:56 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	smaller_five(t_list **stack_a, t_list **stack_b)
 	else if (ft_lstsize((*stack_a)) == 5)
 		sortfive(&(*stack_a), &(*stack_b));
 	freeall(&(*stack_a));
-	exit(0);
+	exit(1);
 }
 
 void	sorting_algorithm(t_list **stack_a, t_list **stack_b)
@@ -131,6 +131,23 @@ t_list	*copy_list(t_list *stack)
 	return node;
 }
 
+/*t_list	*copy_list(t_list *stack)
+{
+	t_list	*temp;
+	t_list	*copy;
+	t_list	*node;
+	
+	copy = NULL;
+	while(temp)
+	{
+		node = ft_lstnew(temp->content);
+		ft_lstadd_back(&copy, node);
+		temp = temp->next;
+	}
+	return copy;	
+}*/
+
+
 void	swap(int *a, int *b)
 {
 	int temp;
@@ -167,33 +184,40 @@ int	getlast(t_list *stack_a)
 	return temp->content;
 }
 
+void	fill_list(t_list **stack_a, int	arg_count, char **arg_vect)
+{
+	t_list	*add_back;
+	int		nb;
+	int		i;
+
+	i = 0;
+	while(i < arg_count)
+	{
+		nb = ft_atoi(arg_vect [i + 1], &(*stack_a));
+		add_back = ft_lstnew(nb);
+		if (!add_back)
+			freeall(&(*stack_a));
+		ft_lstadd_back(&(*stack_a), add_back);
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
-	int		i;
-	int		nb;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*add_back;
 	t_list	*temp;
 
 	error(ac, NULL);
-	i = 1;
-	nb = ft_atoi(av[i], NULL);
-	stack_a = ft_lstnew(nb);
+	stack_a = NULL;
 	stack_b = NULL;
-	while (i < ac - 1)
-	{
-		nb = ft_atoi(av[i + 1], &stack_a);
-		add_back = ft_lstnew(nb);
-		if (!add_back)
-			freeall(&stack_a);
-		ft_lstadd_back(&stack_a, add_back);
-		i++;
-	}
+	temp = NULL;
+	fill_list(&stack_a, ac - 1, av);
 	error(hasdouble(stack_a), &stack_a);
 	if (ft_lstsize(stack_a) <= 5)
 		smaller_five(&stack_a, &stack_b);
 	temp = copy_list(stack_a);
+	//printstack(temp, 't');
 	if (!temp)
 	{
 		freeall(&stack_a);
@@ -202,10 +226,13 @@ int	main(int ac, char **av)
 	sorted(&temp);
 	getindex(stack_a, temp);
 	sorting_algorithm(&stack_a, &stack_b);
-	if (is_sorted(stack_a) == 1)
-		ft_printf("everything is sorted\n");
+	// if (is_sorted(stack_a) == 1)
+	// 	ft_printf("everything is sorted\n");
+	//sa(stack_a); //TESTING FUNCTINS RA AND SA HAVE MEMORY LEAKS
+	freeall(&temp);
 	freeall(&stack_a);
-	free(temp);
+	temp = NULL;
+	stack_a = NULL;
 	if (stack_b)
 		free(stack_b);
 }

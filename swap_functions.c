@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:54:30 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/13 18:50:00 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:15:45 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,35 @@
 #include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
 
+
 void	sa(t_list *head)
 {
-	int	node;
-
-	if (ft_lstsize(head) < 2)
+	if (!head || ft_lstsize(head) < 2)
 		return ;
-	node = head->next->content;
-	head->next->content = head->content;
-	head->content = node;
+	swap(&head->content, &head->next->content);
 	write(1, "sa\n", 3);
 }
 
 void	sb(t_list *head)
 {
-	int	node;
-
-	if (ft_lstsize(head) < 2)
+	if (!head || ft_lstsize(head) < 2)
 		return ;
-	node = head->next->content;
-	head->next->content = head->content;
-	head->content = node;
+	swap(&head->content, &head->next->content);
 	write(1, "sb\n", 3);
 }
 
 void	swpa(t_list *head)
 {
-	int	node;
-
-	if (ft_lstsize(head) < 2)
+	if (!head || ft_lstsize(head) < 2)
 		return ;
-	node = head->next->content;
-	head->next->content = head->content;
-	head->content = node;
+	swap(&head->content, &head->next->content);
 }
 
 void	swpb(t_list *head)
 {
-	int	node;
-
-	if (ft_lstsize(head) < 2)
+	if (!head || ft_lstsize(head) < 2)
 		return ;
-	node = head->next->content;
-	head->next->content = head->content;
-	head->content = node;
+	swap(&head->content, &head->next->content);
 }
 
 void	ss(t_list *stack_a, t_list *stack_b)

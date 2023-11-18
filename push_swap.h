@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:06:19 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/16 15:09:14 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:47:46 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,10 @@ void	sortfive(t_list **stack_a, t_list **stack_b);
 int		hasdouble(t_list *head);
 void	pushmin(t_list **stack_a, t_list **stack_b);
 int		getpos(t_list *stack, int nbr);
+void	swap(int *a, int *b);
+int	    getlast(t_list *stack_a);
+void printstack(t_list *head, char c); //THIS FUNCTION IS ONLY FOR TESTING AND NOT NEEDED
+void ft_list_remove_if(t_list **head, t_list *node);
+
 
 #endif

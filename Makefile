@@ -28,7 +28,5 @@ fclean: clean
 	+$(MAKE) fclean -C ft_printf
 
 re:	fclean all
-	+$(MAKE) re -C libft
-	+$(MAKE) re -C ft_printf
 
 .PHONY: all clean fclean re

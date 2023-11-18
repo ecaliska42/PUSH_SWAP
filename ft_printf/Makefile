@@ -3,7 +3,7 @@ CC=	cc
 CFLAGS=	-Wall -Werror -Wextra
 
 SRC=	ft_printf.c ft_putnbr.c ft_unsigned_putnbr.c \
-	print.c str.c len.c adress.c hexadecimal.c
+		print.c str.c len.c adress.c hexadecimal.c
 
 OBJ= $(SRC:.c=.o)
 
