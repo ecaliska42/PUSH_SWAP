@@ -6,16 +6,19 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:29:25 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 20:49:13 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:59:39 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	getindex(t_list *stack_a, t_list *sorted)
+void	get_index(t_list *stack_a, t_list *sorted)
 {
-	t_list *temp = stack_a;
-	int j = 0;
+	t_list *temp;
+	int j;
+	
+	temp = stack_a;
+	j = 0;
 	while(sorted)
 	{
 		if (temp->content == sorted->content)
@@ -78,7 +81,74 @@ int	containsneg(t_list *stack_a)
 	return 0;
 }
 
-void	error(int check, t_list **stack)
+
+int	is_sorted(t_list *stack)
+{
+	int	temp;
+
+	temp = stack->content;
+	while (stack)
+	{
+		if (temp > stack->content)
+			return (0);
+		temp = stack->content;
+		stack = stack->next;
+	}
+	return (1);
+}
+
+void	freeall(t_list **lst)
+{
+	t_list	*temp;
+
+	if (!(*lst))
+		return ;
+	while (*lst != NULL)
+	{
+		temp = *lst;
+		*lst = temp->next;
+		free (temp);
+	}
+}
+
+int	hasdouble(t_list *head)
+{
+	int		tmpnbr;
+	t_list	*temp;
+
+	while (head)
+	{
+		temp = head;
+		tmpnbr = head->content;
+		while (temp->next != NULL)
+		{
+			temp = temp->next;
+			if (tmpnbr == temp->content)
+				return (-1);
+		}
+		head = head->next;
+	}
+	return (0);
+}
+
+int	getpos(t_list *stack, int nbr)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		if (stack->content == nbr)
+			return (i);
+		i++;
+		stack = stack->next;
+	}
+	return (i);
+}
+
+
+
+void	error_checker(int check, t_list **stack)
 {
 	if (check == 1)
 		exit(ft_printf("no numbers\n"));
@@ -114,7 +184,7 @@ void	swap(int *a, int *b)
 	*b = temp;	
 }
 
-void	sorted(t_list **stack)
+void	sorter(t_list **stack)
 {
 	t_list	*temp;
 
@@ -166,11 +236,11 @@ int	main(int ac, char **av)
 	t_list	*stack_b;
 	t_list	*temp;
 
-	error(ac, NULL);
+	error_checker(ac, NULL);
 	stack_a = NULL;
 	stack_b = NULL;
 	fill_list(&stack_a, ac - 1, av);
-	error(hasdouble(stack_a), &stack_a);
+	error_checker(hasdouble(stack_a), &stack_a);
 	if (ft_lstsize(stack_a) <= 5)
 		smaller_five(&stack_a, &stack_b);
 	temp = copy_list(stack_a);
@@ -179,13 +249,11 @@ int	main(int ac, char **av)
 		freeall(&stack_a);
 		return -1;
 	}
-	sorted(&temp);
-	getindex(stack_a, temp);
+	sorter(&temp);
+	get_index(stack_a, temp);
 	sorting_algorithm(&stack_a, &stack_b);
 	freeall(&temp);
 	freeall(&stack_a);
 	temp = NULL;
 	stack_a = NULL;
-	// if (stack_b)
-	// 	free(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:56:09 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 20:46:50 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:55:07 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,62 +70,8 @@ void	rrb(t_list **stack_b, int print)
 		write(1, "rrb\n", 4);
 }
 
-// void	revra(t_list **stack_a)
-// {
-// 	t_list	*temp;
-// 	t_list	*add;
-// 	int		node;
-
-// 	temp = *stack_a;
-// 	while (temp->next != NULL)
-// 	{
-// 		temp = temp->next;
-// 	}
-// 	node = temp->content;
-// 	temp = *stack_a;
-// 	while (temp->next->next != NULL)
-// 	{
-// 		temp = temp->next;
-// 	}
-// 	free(temp->next);
-// 	add = ft_lstnew(node);
-// 	if (!add)
-// 		exit (-1);
-// 	temp->next = NULL;
-// 	temp = *stack_a;
-// 	ft_lstadd_front(&(*stack_a), add);
-// }
-
-// void	revrb(t_list **stack_b)
-// {
-// 	t_list	*temp;
-// 	t_list	*add;
-// 	int		node;
-
-// 	temp = *stack_b;
-// 	while (temp->next != NULL)
-// 	{
-// 		temp = temp->next;
-// 	}
-// 	node = temp->content;
-// 	temp = *stack_b;
-// 	while (temp->next->next != NULL)
-// 	{
-// 		temp = temp->next;
-// 	}
-// 	free(temp->next);
-// 	add = ft_lstnew(node);
-// 	if (!add)
-// 		exit (-1);
-// 	temp->next = NULL;
-// 	temp = *stack_b;
-// 	ft_lstadd_front(&(*stack_b), add);
-// }
-
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
-	// revra(&(*stack_a));
-	// revrb(&(*stack_b));
 	rra(&(*stack_a), -1);
 	rrb(&(*stack_b), -1);
 	write(1, "rrr\n", 4);
