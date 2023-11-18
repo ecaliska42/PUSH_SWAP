@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:54:57 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 17:50:59 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:11:27 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	if (!node_to_add)
 		return ;
 	ft_lstadd_front(stack_a, node_to_add);
-	//ft_list_remove_if(&(*stack_b), node_to_add);
 	temp_b = *stack_b;
 	*stack_b = temp_b->next;
 	free (temp_b);
 	temp_b = NULL;
-	//free (node_to_add);
 	write(1, "pa\n", 3);
 }
 
@@ -43,11 +41,11 @@ void	pb(t_list **stack_a, t_list **stack_b)
 		return ;
 	node_to_add = ft_lstnew((*stack_a)->content);
 	if (!node_to_add)
-		exit (-1);
+		return ;
 	ft_lstadd_front(stack_b, node_to_add);
 	temp_a = *stack_a;
 	*stack_a = temp_a->next;
 	free (temp_a);
-	//free (node_to_add);
+	temp_a = NULL;
 	write(1, "pb\n", 3);
 }

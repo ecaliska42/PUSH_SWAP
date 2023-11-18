@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:31:50 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 19:27:42 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:03:08 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static void	error(t_list **stack)
 	exit(write(1, "Error\n", 6));
 }
 
-long long int	ft_atoi(const char *nptr, t_list **stack)
+long int	ft_atoi(const char *nptr, t_list **stack)
 {
-	long long int	num;
-	int	neg;
-	int	pos;
+	long int	num;
+	int			neg;
+	int			pos;
 
 	num = 0;
 	neg = 1;
