@@ -6,13 +6,11 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:54:57 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 20:11:27 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 21:16:01 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
 
 void	pa(t_list **stack_a, t_list **stack_b)
 {

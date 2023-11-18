@@ -6,13 +6,11 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:55:31 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 20:53:18 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/18 21:16:04 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
 
 static void	list_remove_if(t_list **head, t_list *node)
 {
