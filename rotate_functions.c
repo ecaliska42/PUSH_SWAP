@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:55:31 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 21:16:04 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/19 17:54:27 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,13 @@
 static void	list_remove_if(t_list **head, t_list *node)
 {
 	t_list	*cur;
-	t_list	*prev;
 
 	if (head == NULL || *head == NULL)
 		return ;
 	cur = *head;
-	prev = NULL;
-	while (cur != NULL)
-	{
-		if (cur->content == node->content)
-		{
-			if (prev == NULL)
-				*head = cur->next;
-			else
-				prev->next = cur->next;
-			free(cur);
-			cur = NULL;
-			break ;
-		}
-		prev = cur;
-		cur = cur->next;
-	}
+	*head = cur->next;
+	free (cur);
+	cur = NULL;
 }
 
 void	ra(t_list **stack_a, int print)

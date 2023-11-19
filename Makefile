@@ -10,7 +10,7 @@ NAME= push_swap
 
 RM= rm -f
 
-$(NAME): $(NAME)
+$(NAME): $(SRC)
 	make -C ./libft all
 	make -C ./ft_printf all
 	$(CC) -g $(CFLAG) -o $(NAME) $(SRC) libft/libft.a ft_printf/libftprintf.a
