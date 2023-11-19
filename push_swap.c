@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:29:25 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 21:32:31 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/19 13:32:34 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ int	main(int ac, char **av)
 	get_index(stack_a, temp);
 	sorting_algorithm(&stack_a, &stack_b);
 	freeall(&temp);
-	// if (is_sorted(stack_a))
-	// 	printf("is sorted\n");
 	freeall(&stack_a);
 	temp = NULL;
 	stack_a = NULL;
