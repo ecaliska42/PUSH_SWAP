@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:29:25 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/19 17:57:03 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/19 19:50:34 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	smaller_five(t_list **stack_a, t_list **stack_b)
 	else if (ft_lstsize((*stack_a)) == 5)
 		sortfive(&(*stack_a), &(*stack_b));
 	freeall(&(*stack_a));
-	exit(1);
+	exit(0);
 }
 
 void	sorting_algorithm(t_list **stack_a, t_list **stack_b)
@@ -35,7 +35,7 @@ void	sorting_algorithm(t_list **stack_a, t_list **stack_b)
 	while (is_sorted(*stack_a) == 0)
 	{
 		len = ft_lstsize(*stack_a);
-		while (len--)
+		while (len-- && is_sorted(*stack_a) == 0)
 		{
 			if ((*stack_a)->content >> raiser & 1)
 				ra(&(*stack_a), 1);
@@ -74,4 +74,5 @@ int	main(int ac, char **av)
 	freeall(&stack_a);
 	temp = NULL;
 	stack_a = NULL;
+	return (0);
 }

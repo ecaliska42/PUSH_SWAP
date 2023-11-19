@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 21:09:21 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/19 17:49:15 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/19 18:05:40 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error_checker(int check, t_list **stack)
 {
 	if (check == 1)
-		exit(ft_printf("Error\n"));
+		exit(-1);
 	else if (check == -1)
 	{
 		freeall(&(*stack));

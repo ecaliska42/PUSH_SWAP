@@ -6,23 +6,11 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:31:50 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/18 20:03:08 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:22:36 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	number(const char *nptr)
-{
-	int	i;
-
-	i = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-	{
-		i++;
-	}
-	return (i);
-}
 
 static void	free_my_nodes(t_list **stack)
 {
@@ -46,26 +34,27 @@ long int	ft_atoi(const char *nptr, t_list **stack)
 {
 	long int	num;
 	int			neg;
-	int			pos;
 
 	num = 0;
 	neg = 1;
-	pos = number(nptr);
-	if (nptr[pos] == '-')
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	if (*nptr == '-')
 	{
 		neg *= -1;
-		pos++;
+		nptr++;
 	}
-	if (!(nptr[pos] >= '0' && nptr[pos] <= '9'))
+	if (!(*nptr >= '0' && *nptr <= '9'))
 		error(&(*stack));
-	while (nptr[pos])
+	while (*nptr)
 	{
-		if (nptr[pos] >= '0' && nptr[pos] <= '9')
-			num = num * 10 + (nptr[pos++] - '0');
+		if (*nptr >= '0' && *nptr <= '9')
+			num = num * 10 + (*nptr - '0');
 		else
 			error(&(*stack));
+		if (num > 2147483647 || (neg == -1 && num > 2147483648))
+			error(&(*stack));
+		nptr++;
 	}
-	if (num >= 2147483647 || num <= -2147483648)
-		error(&(*stack));
 	return (num * neg);
 }

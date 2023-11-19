@@ -6,13 +6,13 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:55:31 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/19 17:54:27 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:23:11 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	list_remove_if(t_list **head, t_list *node)
+static void	list_remove(t_list **head, t_list *node)
 {
 	t_list	*cur;
 
@@ -33,7 +33,7 @@ void	ra(t_list **stack_a, int print)
 	node = ft_lstnew((*stack_a)->content);
 	if (!node)
 		return ;
-	list_remove_if(&(*stack_a), node);
+	list_remove(&(*stack_a), node);
 	ft_lstadd_back(&(*stack_a), node);
 	if (print == 1)
 		write(1, "ra\n", 3);
@@ -48,7 +48,7 @@ void	rb(t_list **stack_b, int print)
 	node = ft_lstnew((*stack_b)->content);
 	if (!node)
 		return ;
-	list_remove_if(&(*stack_b), node);
+	list_remove(&(*stack_b), node);
 	ft_lstadd_back(&(*stack_b), node);
 	if (print == 1)
 		write(1, "rb\n", 3);
