@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:31:50 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/20 15:50:47 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:04:57 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	free_my_nodes(t_list **stack)
 	}
 }
 
-static void	error(t_list **stack, char *temp)
+static void	err(t_list **stack, char *temp)
 {
 	free_my_nodes(&(*stack));
 	free (temp);
@@ -38,14 +38,14 @@ int	calculate(const char *nptr, int neg, t_list **stack)
 	long int	num;
 
 	num = 0;
-	while(*nptr)
+	while (*nptr)
 	{
 		if (*nptr >= '0' && *nptr <= '9')
 			num = num * 10 + (*nptr - '0');
 		else
-			error(&(*stack), NULL);
+			err(&(*stack), NULL);
 		if (num > 2147483647 || (neg == -1 && num > 2147483648))
-			error(&(*stack), NULL);
+			err(&(*stack), NULL);
 		nptr++;
 	}
 	return (num);
@@ -69,12 +69,13 @@ long int	ft_atoi(const char *nptr, t_list **stack)
 		nptr++;
 	}
 	if (!(*nptr >= '0' && *nptr <= '9'))
-		error(&(*stack), NULL);
+		err(&(*stack), NULL);
 	num = calculate(nptr, neg, stack);
-	temp = ft_itoa(num);
+	temp = ft_itoa(num * neg);
+	if (!temp)
+		return (-1);
 	if (strcmp(str, temp) != 0)
-		error(&(*stack), temp);
+		err(&(*stack), temp);
 	free(temp);
-	temp = NULL;
 	return (num * neg);
 }
