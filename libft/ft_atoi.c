@@ -6,7 +6,7 @@
 /*   By: ecaliska <ecaliska@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:31:50 by ecaliska          #+#    #+#             */
-/*   Updated: 2023/11/20 16:04:57 by ecaliska         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:14:00 by ecaliska         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ long int	ft_atoi(const char *nptr, t_list **stack)
 		err(&(*stack), NULL);
 	num = calculate(nptr, neg, stack);
 	temp = ft_itoa(num * neg);
-	if (!temp)
-		return (-1);
 	if (strcmp(str, temp) != 0)
 		err(&(*stack), temp);
 	free(temp);
